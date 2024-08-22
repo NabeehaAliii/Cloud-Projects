@@ -12,4 +12,4 @@ I'm Nabeeha Ali, a Computer Science student with a strong passion for cloud comp
 
 ## Contact
 
-Feel free to reach out if you have any questions, feedback, or collaboration opportunities! You can contact me via [email@example.com](mailto:email@example.com).
+Feel free to reach out if you have any questions, feedback, or collaboration opportunities! You can contact me via [alinabeeha44@gmail.com](mailto:alinabeeha44@gmail.com).
