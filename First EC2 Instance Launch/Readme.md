@@ -112,17 +112,6 @@ Amazon EC2 (Elastic Compute Cloud) is a web service that provides resizable comp
 
 <img width="960" alt="Instance is Launched" src="https://github.com/user-attachments/assets/3c3266e3-b46c-4253-9aab-655707e573db">
 
-- **Instructions:**
-  1. Go back to the EC2 Dashboard and find your instance under **Instances**.
-  2. Copy the **Public IP** or **Public DNS**.
-  3. Open your terminal or SSH client.
-  4. Use the following command to connect:
-     ```bash
-     ssh -i "your-key.pem" ec2-user@your-ec2-public-ip
-     ```
-  5. Replace `"your-key.pem"` with the path to your key pair and `your-ec2-public-ip` with the instance's IP address.
-  6. Once connected, you can run commands on your instance.
-
 ## Step 11: Terminate the Instance (Optional)
 **Objective:** Safely terminate your EC2 instance when you’re done.
 
