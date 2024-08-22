@@ -17,29 +17,49 @@ Amazon EC2 (Elastic Compute Cloud) is a web service that provides resizable comp
 
 - **Instructions:** Log into your AWS Management Console. From the services menu, select **EC2** under the "Compute" category to navigate to the EC2 Dashboard.
 
+<img width="960" alt="EC2 Mangement Console" src="https://github.com/user-attachments/assets/9c18ac39-4ff8-4d88-89a4-703290450fff">
+
 ## Step 2: Select Your Region
 **Objective:** Choose the AWS region where you want to launch your EC2 instance.
 
 - **Instructions:**
   1. In the top right corner of the AWS Management Console, you will see the current region (e.g., "US East (N. Virginia)").
   2. Click on the region name to open a drop-down menu and select your preferred region.
-  3. **Considerations:** Choose a region that is closest to your user base or where you expect the lowest latency. Some services and AMIs may also be region-specific.
+     
+<img width="655" alt="Select Region" src="https://github.com/user-attachments/assets/b6449008-8a8d-4081-8695-7d75746efc3f">
 
-## Step 3: Choose an Amazon Machine Image (AMI)
+  4. **Considerations:** Choose a region that is closest to your user base or where you expect the lowest latency. Some services and AMIs may also be region-specific.
+
+## Step 3: Add Tags
+**Objective:** Organize your resources by adding tags.
+
+- **Instructions:**
+  1. Click **Add Tag**.
+  2. **Key:** Enter "Name".
+  3. **Value:** Enter a descriptive name for your instance (e.g., "MyFirstEC2Instance").
+
+<img width="655" alt="Name and tag" src="https://github.com/user-attachments/assets/eaf24c45-81e1-4bb5-8a01-e68f3c493134">
+
+## Step 4: Choose an Amazon Machine Image (AMI)
 **Objective:** Select the operating system for your EC2 instance.
 
 - **Instructions:**
-  1. Click on **Launch Instance**.
-  2. Under the **Choose an Amazon Machine Image (AMI)** section, select the desired AMI. For beginners, you can choose **Amazon Linux 2 AMI (Free tier eligible)** or **Ubuntu Server**.
+  1. Under the **Choose an Amazon Machine Image (AMI)** section, select the desired AMI. For beginners, you can choose **Amazon Linux 2 AMI (Free tier eligible)** or **Ubuntu Server**.
 
-## Step 4: Choose an Instance Type
+     <img width="849" alt="Choose an AMI" src="https://github.com/user-attachments/assets/6975e038-33ea-4f32-948a-5fd3ff686432">
+
+
+## Step 5: Choose an Instance Type
 **Objective:** Select the appropriate instance type based on your requirements.
 
 - **Instructions:**
   1. On the **Choose an Instance Type** page, select **t2.micro** (Free tier eligible) if you’re just starting.
   2. Click **Next: Configure Instance Details**.
 
-## Step 5: Configure Instance Details
+<img width="655" alt="Instance type" src="https://github.com/user-attachments/assets/637934ef-5924-4bb3-86a3-2a9f0a7d558a">
+
+
+## Step 6: Configure Instance Details
 **Objective:** Customize the instance settings.
 
 - **Instructions:**
@@ -55,16 +75,8 @@ Amazon EC2 (Elastic Compute Cloud) is a web service that provides resizable comp
 - **Instructions:**
   1. The default storage of **8 GB** is usually sufficient for simple tasks. Adjust this if needed.
   2. Leave the volume type as **General Purpose SSD (gp2)**.
-  3. Click **Next: Add Tags**.
-
-## Step 7: Add Tags
-**Objective:** Organize your resources by adding tags.
-
-- **Instructions:**
-  1. Click **Add Tag**.
-  2. **Key:** Enter "Name".
-  3. **Value:** Enter a descriptive name for your instance (e.g., "MyFirstEC2Instance").
-  4. Click **Next: Configure Security Group**.
+  
+<img width="890" alt="Configure Storage" src="https://github.com/user-attachments/assets/5c69c656-c423-4aed-bfe2-99467ec23f93">
 
 ## Step 8: Configure Security Group
 **Objective:** Set up firewall rules to control traffic to your instance.
@@ -80,6 +92,9 @@ Amazon EC2 (Elastic Compute Cloud) is a web service that provides resizable comp
      - **Source:** Select **My IP** to restrict SSH access to your IP address.
   5. Click **Review and Launch**.
 
+<img width="655" alt="Network Setting for Traffic" src="https://github.com/user-attachments/assets/4fc68146-b06c-401e-9666-3e6bde188c47">
+
+
 ## Step 9: Review and Launch
 **Objective:** Review your configurations and launch the instance.
 
@@ -88,9 +103,14 @@ Amazon EC2 (Elastic Compute Cloud) is a web service that provides resizable comp
   2. Click **Launch**.
   3. **Select an existing key pair** or create a new one. Download the PEM file if creating a new key pair.
   4. Confirm and click **Launch Instances**.
+     
+<img width="890" alt="Successfully Launch" src="https://github.com/user-attachments/assets/438cd80c-bbce-4d4b-86c9-41365f3d1546">
+
 
 ## Step 10: Connecting to Your EC2 Instance
 **Objective:** Access the EC2 instance using SSH.
+
+<img width="960" alt="Instance is Launched" src="https://github.com/user-attachments/assets/3c3266e3-b46c-4253-9aab-655707e573db">
 
 - **Instructions:**
   1. Go back to the EC2 Dashboard and find your instance under **Instances**.
