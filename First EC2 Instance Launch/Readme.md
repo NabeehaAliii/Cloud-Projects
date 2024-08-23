@@ -59,16 +59,6 @@ Amazon EC2 (Elastic Compute Cloud) is a web service that provides resizable comp
 <img width="655" alt="Instance type" src="https://github.com/user-attachments/assets/637934ef-5924-4bb3-86a3-2a9f0a7d558a">
 
 
-## Step 6: Configure Instance Details
-**Objective:** Customize the instance settings.
-
-- **Instructions:**
-  1. **Number of Instances:** Leave as 1.
-  2. **Network:** Choose the default VPC (or configure a custom VPC if required).
-  3. **Subnet:** Select the default or create a new one.
-  4. **Auto-assign Public IP:** Ensure this is enabled so you can access your instance.
-  5. Other settings can be left at default. Click **Next: Add Storage**.
-
 ## Step 6: Add Storage
 **Objective:** Configure the storage attached to your instance.
 
@@ -77,6 +67,16 @@ Amazon EC2 (Elastic Compute Cloud) is a web service that provides resizable comp
   2. Leave the volume type as **General Purpose SSD (gp2)**.
   
 <img width="890" alt="Configure Storage" src="https://github.com/user-attachments/assets/5c69c656-c423-4aed-bfe2-99467ec23f93">
+
+## Step 7: Configure Instance Details
+**Objective:** Customize the instance settings.
+
+- **Instructions:**
+  1. **Number of Instances:** Leave as 1.
+  2. **Network:** Choose the default VPC (or configure a custom VPC if required).
+  3. **Subnet:** Select the default or create a new one.
+  4. **Auto-assign Public IP:** Ensure this is enabled so you can access your instance.
+  5. Other settings can be left at default.
 
 ## Step 8: Configure Security Group
 **Objective:** Set up firewall rules to control traffic to your instance.
@@ -106,9 +106,21 @@ Amazon EC2 (Elastic Compute Cloud) is a web service that provides resizable comp
      
 <img width="890" alt="Successfully Launch" src="https://github.com/user-attachments/assets/438cd80c-bbce-4d4b-86c9-41365f3d1546">
 
-
 ## Step 10: Connecting to Your EC2 Instance
 **Objective:** Access the EC2 instance using SSH.
+
+- **Instructions:**
+  1. Go back to the EC2 Dashboard and find your instance under **Instances**.
+  2. Copy the **Public IP** or **Public DNS**.
+  3. Open your terminal or SSH client.
+  4. Use the following command to connect:
+     
+bash
+     ssh -i "your-key.pem" ec2-user@your-ec2-public-ip
+
+  5. Replace "your-key.pem" with the path to your key pair and your-ec2-public-ip with the instance's IP address.
+  6. Once connected, you can run commands on your instance.
+
 
 <img width="960" alt="Instance is Launched" src="https://github.com/user-attachments/assets/3c3266e3-b46c-4253-9aab-655707e573db">
 
