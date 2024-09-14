@@ -12,6 +12,7 @@ This document covers everything you need to know about Amazon EBS (Elastic Block
 - [Best Practices](#best-practices)
 - [Restoring a Volume from a Snapshot](#restoring-a-volume-from-a-snapshot)
 - [Automating Snapshots](#automating-snapshots)
+- [Recycle Bin and Retention Rules](#recycle-bin-and-retention-rules)
 - [Screenshots](#screenshots)
 
 ---
@@ -92,6 +93,7 @@ Snapshots can be used to create a new EBS volume with the same data as the origi
 The new volume will have all the data from the time the snapshot was created.
 
 ---
+
 ## Automating Snapshots
 
 You can automate snapshot creation with **AWS Lifecycle Manager**, **AWS Backup**, or custom scripts with Lambda.
@@ -116,6 +118,28 @@ This will ensure that your snapshots are automatically created and deleted based
 
 ### Example: Lambda Automation (Custom Script)
 You can use AWS Lambda with CloudWatch events to automate the creation and deletion of snapshots at specific intervals (e.g., daily or weekly).
+
+---
+
+## Recycle Bin and Retention Rules
+
+### What is the Recycle Bin?
+
+The **Recycle Bin** in AWS allows you to restore snapshots that were accidentally deleted. You can create retention rules to ensure that deleted snapshots can be restored within a specified retention period.
+
+### Step-by-Step:
+
+1. Navigate to **Recycle Bin** under the **AWS Management Console**.
+2. Create a **Retention Rule** by specifying the retention period (e.g., 365 days).
+3. After creating the rule, deleted snapshots will move to the Recycle Bin and remain there until the retention period expires.
+
+### What Happens if You Delete a Volume with a Lifecycle Policy?
+
+- **Lifecycle Manager** will no longer take snapshots for a deleted volume since it doesn’t exist.
+- **Costs**: You will not be charged for new snapshots since no snapshots are being created, but any existing snapshots will continue to incur storage costs.
+
+### Cost Implications of Retention Rules:
+- Retention rules themselves do not incur costs, but storing snapshots that are retained due to the rule will incur charges based on the size and number of snapshots stored.
 
 ---
 
@@ -145,5 +169,4 @@ Ensuring that the new volume is a file system then mounting it and having some f
 ## Conclusion
 
 Amazon EBS Snapshots are an essential tool for managing data backups, migrations, and disaster recovery for your EBS volumes. They allow you to back up data in a cost-effective, incremental manner and can be used to restore your EC2 instances or move data across regions and accounts. Following best practices like tagging, automating snapshots, and cross-region replication can help you manage your snapshots efficiently.
-
 ```
