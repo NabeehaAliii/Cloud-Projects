@@ -12,8 +12,6 @@ This document provides an in-depth guide on Fast Snapshot Restore (FSR) for Amaz
 - [Costs and Limitations](#costs-and-limitations)
 - [Best Practices](#best-practices)
 - [Monitoring FSR](#monitoring-fsr)
-- [Screenshots](#screenshots)
-  
 ---
 
 ## What is Fast Snapshot Restore (FSR)?
