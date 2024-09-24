@@ -6,7 +6,7 @@ AWS Transit Gateway (TGW) is a networking service that allows you to connect mul
 
 With TGW, you can significantly reduce the complexity of managing multiple peering connections between VPCs and allow for efficient routing across regions or accounts. 
 
-![AWS Transit Gateway Diagram](path_to_the_image)
+<img width="655" alt="transistgw" src="https://github.com/user-attachments/assets/66c1b654-62c1-4f6d-aadc-37fcc8f5866f">
 
 ## Key Features
 
