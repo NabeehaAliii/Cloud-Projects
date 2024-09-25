@@ -10,6 +10,8 @@ Amazon Route 53 is a scalable and highly available Domain Name System (DNS) web 
 
 ## How DNS Works with Route 53
 
+<img width="655" alt="Route53-DNS" src="https://github.com/user-attachments/assets/99f7f0c7-2b9a-435a-be77-42fc0301b876">
+
 ### Steps Involved in DNS Resolution
 
 1. **End User Request (1)**: A user opens a browser and enters a domain name such as `www.example.com`.
@@ -29,6 +31,9 @@ Amazon Route 53 is a scalable and highly available Domain Name System (DNS) web 
 ### DNS Hierarchy
 
 The DNS hierarchy follows a tree-like structure:
+
+<img width="655" alt="DNS-hierarchy" src="https://github.com/user-attachments/assets/522dd6dd-e326-42fd-a0c0-6708b2d4beec">
+
 
 - **Root (Top-Level Domains)**: Contains the root and TLDs such as `.com`, `.org`, `.net`, etc.
 - **Second-Level Domains**: Examples include `example.com` or `aws.com`.
