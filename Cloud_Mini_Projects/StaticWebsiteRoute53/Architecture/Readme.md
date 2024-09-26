@@ -1,8 +1,50 @@
 # **DNS Resolution and Static Website Hosting on AWS**
 
+## **Table of Contents**
+
+1. [Project Overview](#project-overview)
+2. [Architecture Diagram](#architecture-diagram)
+3. [Key Components](#key-components)
+4. [Step-by-Step Flow Explanation](#step-by-step-flow-explanation)
+   - [User Access via Browser](#1-user-access-via-browser)
+   - [DNS Resolver Queries Root and TLD Servers](#2-dns-resolver-queries-root-and-tld-servers)
+   - [TLD Name Server Directs to Route 53 Name Server](#3-tld-name-server-directs-to-route-53-name-server)
+   - [Route 53 Responds with CNAME Record](#4-route-53-responds-with-cname-record)
+   - [Browser Connects to S3 Static Website](#5-browser-connects-to-s3-static-website)
+   - [AWS Cloud Setup](#6-aws-cloud-setup)
+5. [Technical Setup Summary](#technical-setup-summary)
+6. [Phases of DNS Resolution and Static Website Hosting Process](#phases-of-dns-resolution-and-static-website-hosting-process)
+   - [Phase 1: DNS Resolution Process (Blue Lines)](#phase-1-dns-resolution-process-blue-lines)
+   - [Phase 2: Connection to S3 Website (Black Lines)](#phase-2-connection-to-s3-website-black-lines)
+7. [Summary](#summary)
+8. [Additional Notes for the README](#additional-notes-for-the-readme)
+
+---
+
+## **Project Overview**
+
+This project demonstrates the process of hosting a static website on AWS using **S3** and **Route 53**. It provides details about how DNS resolution is handled when users access a domain (e.g., `www.practiceaws.click`), and how the domain is mapped to a static website hosted in an S3 bucket.
+
+---
+
+## **Architecture Diagram**
+
 The following architecture diagram illustrates the flow of DNS resolution and the process of hosting a static website using AWS S3 and Route 53.
 
-<img width="820" alt="ArchitecturePic" src="https://github.com/user-attachments/assets/e4e20e59-a81a-4151-82a9-f49ca5a7d6ce">
+![Hosting Static Website on S3 Bucket and DNS Resolution](https://github.com/user-attachments/assets/2b36a0ed-60bb-4015-8002-8108351e5a52)
+
+---
+
+## **Key Components**
+
+1. **S3 Bucket**: The storage service used to host the static website.
+   - The S3 bucket is configured with **Static Website Hosting Enabled** to serve the website files (HTML, CSS, JS).
+
+2. **Route 53**: AWS's scalable DNS service that resolves domain names to IP addresses or other endpoints (in this case, the S3 static website URL).
+
+3. **Custom Domain**: Users access the static website through a custom domain (e.g., `www.practiceaws.click`).
+
+---
 
 ## **Step-by-Step Flow Explanation**
 
@@ -56,7 +98,7 @@ The following architecture diagram illustrates the flow of DNS resolution and th
 
 ---
 
-### **Phases of the DNS Resolution and Static Website Hosting Process**
+### **Phases of DNS Resolution and Static Website Hosting Process**
 
 The diagram represents the flow of how DNS resolution occurs when a user accesses the static website hosted on Amazon S3. The process is divided into two key phases, each represented with different colored lines to distinguish the stages.
 
@@ -104,11 +146,3 @@ The **black lines** represent the second phase of the process, where the browser
 
 This color-coding helps distinguish between the DNS resolution and the final connection to the hosted website on S3, making it easier to follow the process step by step.
 
----
-
-### **Additional Notes for the README**:
-- **IAM**: For uploading the files to the S3 bucket, an IAM user with appropriate permissions is used to manage the bucket and enable static website hosting.
-- **Route 53 Hosted Zone**: Be sure to configure the **TTL (Time to Live)** in Route 53 to control the caching behavior of the DNS records.
-- **Security**: If necessary, implement bucket policies or access control lists (ACLs) to secure access to your S3 bucket.
-
----
