@@ -15,6 +15,8 @@ This architecture is designed to deliver content to users from the closest geogr
 ![Hosting Static Website on S3 Bucket and DNS Resolution](https://github.com/user-attachments/assets/32822c7b-8c5c-4f76-91e0-c5375b1bd583)
 
 
+*Diagram created using [Lucidchart](https://www.lucidchart.com).*
+
 ---
 
 ## Tools Used:
@@ -104,6 +106,4 @@ This setup ensures that your static website is highly available, scalable, and s
 - Check the performance improvements via CloudFront's caching.
 
 ---
-### Visual Architecture Flow:
 
-*Diagram created using [Lucidchart](https://www.lucidchart.com).*
