@@ -104,6 +104,6 @@ This setup ensures that your static website is highly available, scalable, and s
 - Check the performance improvements via CloudFront's caching.
 
 ---
+### Visual Architecture Flow:
 
-Feel free to update the diagram and any additional details as needed to match your specific configuration or add further improvements.
-
+*Diagram created using [Lucidchart](https://www.lucidchart.com).*
