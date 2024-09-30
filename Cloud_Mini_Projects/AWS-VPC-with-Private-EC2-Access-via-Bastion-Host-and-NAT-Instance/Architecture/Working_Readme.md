@@ -1,6 +1,5 @@
 # VPC Setup and SSH Connection with Bastion Host
 
-
 ## 1. IAM User Setup
 
 We created an IAM user vpc_ec2 with restricted permissions to manage EC2 and VPC services.
@@ -130,4 +129,103 @@ The **NAT Gateway** is a managed service in AWS, but it comes with an extra cost
     - SSH into the **Private Instance** and try to ping an external IP (e.g., 8.8.8.8).
     - You should now have internet access on your private instance through the NAT instance.
       
+---
+
+Let’s continue from **Adding an IAM Role for EC2 Instances and CloudWatch**:
+
+---
+
+## 6. Adding an IAM Role for EC2 Instances and CloudWatch
+
+### Problem Statement:
+We wanted to set up CloudWatch to monitor our EC2 instances and capture metrics for CPU usage, memory, disk, and network activity. This requires adding an IAM role with the necessary permissions for EC2 instances to interact with CloudWatch.
+
+### Steps to Add the IAM Role:
+1. Go to the **IAM Management Console** and create a new role.
+2. Select **AWS Service** and choose **EC2**.
+3. Attach the following policies:
+   - `CloudWatchAgentServerPolicy` (allows the instance to use the CloudWatch Agent).
+   - `CloudWatchLogsFullAccess` (grants full access to CloudWatch logs).
+   - `IAMFullAccess` (optional but useful for managing IAM roles).
+
+### Image: IAM Role Creation
+
+<img width="960" alt="IAM_Role_for_cloudWatch" src="https://github.com/user-attachments/assets/10a9c081-4a21-4077-a1a1-e4dd8947577f">
+
+
+4. Attach the role to your EC2 instances.
+
+---
+
+## 7. Installing and Configuring CloudWatch Agent
+
+### Problem Statement:
+To send detailed logs and metrics (like memory usage) to CloudWatch, we needed to install and configure the CloudWatch Agent on both the **Public** and **Private** EC2 instances.
+
+### Steps to Install the CloudWatch Agent:
+1. **Download the CloudWatch Agent** on the EC2 instances.
+
+   ```bash
+   wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+   sudo dpkg -i amazon-cloudwatch-agent.deb
+   ```
+
+### Image: CloudWatch Agent Installation
+
+<img width="960" alt="CloudWatchInstallationANDConfig" src="https://github.com/user-attachments/assets/fae7efe4-d2dc-4ab5-93de-bed733134695">
+
+2. **Configure the CloudWatch Agent**:
+
+   - Use the CloudWatch agent wizard to set up metrics.
+
+   ```bash
+   sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
+   ```
+
+   - Select the appropriate options during the configuration process (e.g., select EC2, choose CPU, memory, and disk metrics).
+   
+   - You will be prompted to select dimensions and metrics to monitor, such as **CPU usage per core**, **EC2 instance dimensions**, etc.
+
+### Image: Configuring the CloudWatch Agent
+
+<img width="960" alt="CloudWatchInstallationANDConfig2" src="https://github.com/user-attachments/assets/6f23b2c2-47b7-454e-aae3-72819462ad18">
+
+
+3. **Start the CloudWatch Agent**:
+
+   ```bash
+   sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a start
+   ```
+
+---
+
+## 8. Testing CloudWatch and Viewing Metrics
+
+### Problem Statement:
+Once the CloudWatch agent is installed and running, we need to ensure that metrics are being sent to CloudWatch successfully.
+
+### Steps:
+1. **Go to the CloudWatch Dashboard**:
+   - Navigate to **Metrics > All Metrics > CWAgent** (Custom Namespace).
+   - You should see the metrics being reported by your EC2 instances.
+
+### Image: CloudWatch Metrics
+
+<img width="960" alt="CWAgent" src="https://github.com/user-attachments/assets/5648e3bf-7727-4bac-807c-85302f0d92c0">
+
+
+2. **Create Alarms**:
+   - Set up alarms for specific metrics (like high CPU utilization) to trigger actions or notifications via SNS (Simple Notification Service).
+
+---
+
+## 9. Learning Outcomes
+
+This task helped us understand:
+1. **VPC Setup**: How to configure a custom VPC with public and private subnets, and use a NAT instance for internet access from a private subnet.
+2. **Bastion Host**: How to securely SSH into a private instance via a public instance (Bastion Host).
+3. **IAM Roles**: How to create and attach an IAM role to EC2 instances to allow them to interact with AWS services like CloudWatch.
+4. **CloudWatch Agent**: Installing and configuring the CloudWatch agent to monitor system-level metrics like CPU, memory, and disk usage, and sending logs/metrics to CloudWatch.
+5. **Monitoring and Alarms**: Viewing EC2 metrics in CloudWatch and setting up alarms for notifications on high resource utilization.
+
 ---
