@@ -36,7 +36,7 @@ This project creates a secure AWS network setup by:
 
 ## **Architecture Diagram**
 
-![Architecture](https://github.com/user-attachments/assets/ec94184d-5699-410c-9ed3-dcb032f1316d)
+![Architecture](https://github.com/user-attachments/assets/fbb4b207-b389-4378-80d0-a47d65a47a79)
 
 ---
 
